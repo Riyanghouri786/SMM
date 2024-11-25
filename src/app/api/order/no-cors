@@ -1,0 +1,8 @@
+const response = await fetch("https://fortunesmm.com/api/v2", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(data),
+  mode: "no-cors", // This bypasses CORS but makes it difficult to work with the response
+});

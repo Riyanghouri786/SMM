@@ -29,15 +29,13 @@ export default function OrderForm() {
     setIsSubmitting(true);
 
     const data = {
-      key: "c004e22e832c4fd8c7e73847e15734fd", // Replace with your actual API key
-      action: "add",
       service: service,
       link: link,
-      quantity: amount,
+      amount: amount,
     };
 
     try {
-      const response = await fetch("https://fortunesmm.com/api/v2", {
+      const response = await fetch("/api/order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,10 +47,9 @@ export default function OrderForm() {
 
       if (response.ok) {
         alert("Order created successfully!");
-        console.log("API Response:", result); // Log the full API response for debugging
+        console.log(result); // Log the response from the API
       } else {
-        console.log("Error Response:", result); // Log error message from API
-        alert("Error creating order: " + (result.message || "Unknown error"));
+        alert("Error creating order: " + result.message);
       }
     } catch (error) {
       console.error("Error:", error);
