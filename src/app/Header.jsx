@@ -1,31 +1,32 @@
 "use client";
+import Link from "next/navigation";
 import { useState } from "react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-blue-600 text-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+    <header className="text-white bg-blue-600 shadow-md">
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <div>
-            <a href="/">
+            <Link href="/">
               <p className="text-2xl font-bold">Riyan Ghouri</p>
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex space-x-6">
-            <a href="/">
+          <nav className="hidden space-x-6 md:flex">
+            <Link href="/">
               <p className="hover:text-blue-300">Home</p>
-            </a>
-            <a href="/service">
+            </Link>
+            <Link href="/service">
               <p className="hover:text-blue-300">Service</p>
-            </a>
-            <a href="/about">
+            </Link>
+            <Link href="/about">
               <p className="hover:text-blue-300">About</p>
-            </a>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -56,16 +57,16 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <nav className="md:hidden flex flex-col space-y-2 bg-blue-700 p-4 rounded-md">
-            <a href="/">
+          <nav className="flex flex-col p-4 space-y-2 bg-blue-700 rounded-md md:hidden">
+            <Link href="/">
               <p className="hover:text-blue-300">Home</p>
-            </a>
-            <a href="/service">
+            </Link>
+            <Link href="/service">
               <p className="hover:text-blue-300">Service</p>
-            </a>
-            <a href="/about">
+            </Link>
+            <Link href="/about">
               <p className="hover:text-blue-300">About</p>
-            </a>
+            </Link>
           </nav>
         )}
       </div>
