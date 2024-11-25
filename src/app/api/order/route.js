@@ -23,9 +23,8 @@ export async function POST(req) {
     );
   }
 
-  // Prepare the request data to send to the external API
   const data = {
-    key: "c004e22e832c4fd8c7e73847e15734fd", // Your API key
+    key: "c004e22e832c4fd8c7e73847e15734fd",
     action: "add",
     service: service,
     link: link,
@@ -33,7 +32,6 @@ export async function POST(req) {
   };
 
   try {
-    // Send the request to the external API (using server-side fetch)
     const response = await fetch("https://fortunesmm.com/api/v2", {
       method: "POST",
       headers: {
@@ -45,20 +43,17 @@ export async function POST(req) {
     const result = await response.json();
 
     if (response.ok) {
-      // If the external API request is successful, return the result
       return new Response(JSON.stringify(result), {
         status: 200,
         headers,
       });
     } else {
-      // Return an error message if the external API fails
       return new Response(
         JSON.stringify({ message: result.message || "Failed to create order" }),
         { status: 500, headers }
       );
     }
   } catch (error) {
-    // Catch any errors in the request process
     console.error("Error:", error);
     return new Response(JSON.stringify({ message: "Internal server error" }), {
       status: 500,
